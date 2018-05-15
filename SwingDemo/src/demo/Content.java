@@ -11,15 +11,22 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
-public class Content extends JSplitPane implements KeyListener {
+public class Content extends JSplitPane {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -571268537018552975L;
 	JPanel topPanel;
 	JPanel bottomPanel;
+	demo.Controller controller = new Controller();
 	
 	Content(){
 		setBounds(100, 100, 600, 600);
 		setOrientation(JSplitPane.VERTICAL_SPLIT);
-		setEnabled(false);
+		
+		setDividerSize(0);
+
 		topPanel = new JPanel();
 		topPanel.setLayout(new FlowLayout());
 		topPanel.add(new Label("Demo file"));
@@ -31,31 +38,12 @@ public class Content extends JSplitPane implements KeyListener {
 		
 		setTopComponent(topPanel);
 		setBottomComponent(bottomPanel);
+					
+		this.setFocusable(true);
+		this.requestFocus();
+		this.addKeyListener(controller);
 		
-		this.addKeyListener(this);
-		
-		setFocusable(true);
 		
 	}
 
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("Megnyomtad a " + arg0.getKeyCode() + " Gombot");
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("Megnyomtad a " + arg0.getKeyCode() + " Gombot");
-
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("Megnyomtad a " + arg0.getKeyCode() + " Gombot");
-
-	}
-	
 }
